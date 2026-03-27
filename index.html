@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dành Cho Kiều ♥</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Quicksand:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush: #F8C8D8;
+  --blush-light: #FDE8EF;
+  --blush-bright: #FFB6C8;
+  --lavender: #D8BFE6;
+  --lavender-light: #EDE4F3;
+  --rose: #E8879C;
+  --rose-deep: #D4697F;
+  --cream: #FFF5F7;
+  --cream-warm: #FFF0F3;
+  --text: #4A3040;
+  --text-light: #7A5A6A;
+  --text-faint: #B8929F;
+  --gold: #E8C87A;
+  --gold-light: #F5E6C0;
+  --pink-glow: rgba(248, 200, 216, 0.6);
+  --white-glass: rgba(255, 255, 255, 0.55);
+  --white-glass-border: rgba(255, 255, 255, 0.7);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, #FFE8F0 0%, #FFF5F7 15%, #FFF0F5 40%, #F5E8F5 60%, #FFE8F0 80%, #FFF5F7 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  line-height: 1.7;
+  font-weight: 400;
+  min-height: 100vh;
+}
+
+/* Soft bokeh blobs */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle 300px at 15% 20%, rgba(255, 182, 200, 0.3), transparent),
+    radial-gradient(circle 250px at 85% 15%, rgba(216, 191, 230, 0.35), transparent),
+    radial-gradient(circle 350px at 50% 50%, rgba(255, 200, 220, 0.15), transparent),
+    radial-gradient(circle 200px at 80% 70%, rgba(245, 230, 192, 0.2), transparent),
+    radial-gradient(circle 280px at 20% 80%, rgba(216, 191, 230, 0.25), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══ DECORATIVE SIDE ELEMENTS ═══ */
+.deco-left, .deco-right {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  opacity: 0.15;
+  font-size: 1.2rem;
+  color: var(--rose);
+}
+.deco-left { left: 8px; }
+.deco-right { right: 8px; }
+
+@media (max-width: 768px) {
+  .deco-left, .deco-right { display: none; }
+}
+
+/* ═══ FLOATING HEARTS - white ═══ */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 8px rgba(255, 182, 200, 0.3);
+  animation: floatHeart linear infinite;
+  filter: blur(0.3px);
+}
+
+@keyframes floatHeart {
+  0% { transform: translateY(110vh) translateX(0) rotate(0deg) scale(0.7); opacity: 0; }
+  8% { opacity: 0.6; }
+  50% { opacity: 0.4; }
+  92% { opacity: 0.2; }
+  100% { transform: translateY(-10vh) translateX(60px) rotate(360deg) scale(1.1); opacity: 0; }
+}
+
+/* ═══ CUTE RIBBON DIVIDERS ═══ */
+.ribbon-divider {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.8em;
+  color: var(--blush-bright);
+  opacity: 0.7;
+  user-select: none;
+}
+
+/* ═══ MAIN CONTENT ═══ */
+main {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+section.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+  position: relative;
+}
+
+.hero-top-deco {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  animation: fadeInSoft 1.5s ease both;
+  filter: drop-shadow(0 2px 8px rgba(232, 135, 156, 0.3));
+}
+
+.hero-stars {
+  font-size: 0.9rem;
+  letter-spacing: 1em;
+  color: var(--blush-bright);
+  margin-bottom: 16px;
+  animation: fadeInSoft 1.8s ease 0.2s both;
+}
+
+.hero h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(3.8rem, 11vw, 6.5rem);
+  font-weight: 700;
+  color: var(--rose-deep);
+  line-height: 1.2;
+  cursor: pointer;
+  position: relative;
+  animation: fadeInSoft 1.8s ease 0.3s both;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  text-shadow: 0 4px 24px rgba(232, 135, 156, 0.25), 0 1px 2px rgba(212, 105, 127, 0.1);
+  user-select: none;
+}
+
+.hero h1:hover {
+  transform: scale(1.04);
+  text-shadow: 0 6px 32px rgba(232, 135, 156, 0.4), 0 1px 2px rgba(212, 105, 127, 0.15);
+}
+
+.hero h1 .heart-dot {
+  display: inline-block;
+  animation: heartBeat 1.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 3vw, 1.45rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-light);
+  margin-top: 14px;
+  letter-spacing: 0.02em;
+  animation: fadeInSoft 1.8s ease 0.7s both;
+}
+
+.hero-deco-bottom {
+  margin-top: 24px;
+  font-size: 0.8rem;
+  letter-spacing: 0.6em;
+  color: var(--blush-bright);
+  opacity: 0.6;
+  animation: fadeInSoft 1.8s ease 1s both;
+}
+
+.hero-hint {
+  position: absolute;
+  bottom: 36px;
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  animation: fadeInSoft 2s ease 1.8s both, gentleBounce 3s ease-in-out infinite 3s;
+}
+
+@keyframes fadeInSoft {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.25); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.18); }
+  56% { transform: scale(1); }
+}
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ═══ COUNTDOWN ═══ */
+.countdown-section { padding: 40px 0 60px; text-align: center; }
+
+.countdown-section .section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-light);
+  margin-bottom: 24px;
+}
+
+.countdown-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-radius: 28px;
+  padding: 40px 28px 36px;
+  box-shadow:
+    0 8px 40px rgba(212, 105, 127, 0.1),
+    0 1px 3px rgba(212, 105, 127, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle pink shimmer inside card */
+.countdown-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(255, 182, 200, 0.12), transparent 60%);
+  pointer-events: none;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  position: relative;
+}
+
+.countdown-unit { padding: 12px 4px; }
+
+.countdown-number {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.2rem, 7vw, 3.5rem);
+  font-weight: 700;
+  color: var(--rose-deep);
+  line-height: 1;
+  display: block;
+  transition: transform 0.3s ease;
+  text-shadow: 0 2px 12px rgba(232, 135, 156, 0.15);
+}
+
+.countdown-unit:hover .countdown-number { transform: scale(1.1); }
+
+.countdown-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--text-faint);
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.countdown-divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blush-bright), transparent);
+  margin: 20px auto 14px;
+}
+
+.countdown-since {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-faint);
+}
+
+/* ═══ SECRET ICONS ═══ */
+.secret-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1.5px solid rgba(255, 182, 200, 0.3);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  user-select: none;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 16px rgba(212, 105, 127, 0.08);
+}
+
+.secret-icon:hover {
+  transform: scale(1.15) rotate(-8deg);
+  background: rgba(255, 230, 238, 0.7);
+  border-color: var(--blush-bright);
+  box-shadow: 0 6px 24px rgba(212, 105, 127, 0.15);
+}
+
+.secret-row {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  padding: 30px 0 40px;
+  flex-wrap: wrap;
+}
+
+.secret-row-hint {
+  text-align: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: -10px;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+/* popup */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 48, 64, 0.18);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.popup-overlay.show { opacity: 1; pointer-events: auto; }
+
+.secret-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  background: linear-gradient(145deg, #FFF8FA, #FFF0F5);
+  border: 1.5px solid var(--blush);
+  border-radius: 24px;
+  padding: 40px 36px;
+  max-width: 340px;
+  width: 88%;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(74, 48, 64, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.4);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.secret-popup.show { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+
+.secret-popup-icon { font-size: 2.5rem; margin-bottom: 14px; }
+.secret-popup p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.7;
+}
+.secret-popup-close {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(184, 146, 159, 0.3);
+}
+.secret-popup-close:hover { color: var(--rose); border-color: var(--rose); }
+
+/* ═══ LOVE LETTER ═══ */
+.letter-section { padding: 20px 0 60px; }
+
+.letter-card {
+  position: relative;
+  background: linear-gradient(135deg, #FFFAF5 0%, #FFF6F0 40%, #FFF2EC 100%);
+  border-radius: 6px;
+  padding: clamp(36px, 6vw, 52px) clamp(28px, 5vw, 48px);
+  box-shadow:
+    0 2px 4px rgba(74, 48, 64, 0.05),
+    0 16px 48px rgba(74, 48, 64, 0.1),
+    inset 0 0 60px rgba(248, 200, 216, 0.06);
+  transform: rotate(-0.6deg);
+  border: 1px solid rgba(248, 200, 216, 0.3);
+}
+
+.letter-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 31px,
+    rgba(216, 191, 230, 0.08) 31px, rgba(216, 191, 230, 0.08) 32px
+  );
+  background-position: 0 20px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.letter-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 56px; bottom: 0;
+  width: 1px;
+  background: rgba(232, 135, 156, 0.12);
+  pointer-events: none;
+}
+
+.letter-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  text-align: right;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.letter-greeting {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem);
+  color: var(--rose-deep);
+  margin-bottom: 20px;
+}
+
+.letter-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 2.5vw, 1.12rem);
+  line-height: 2;
+  color: var(--text);
+}
+.letter-body p { margin-bottom: 14px; text-indent: 2em; }
+.letter-body p:first-child { text-indent: 0; }
+
+.letter-closing {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  color: var(--rose-deep);
+  margin-top: 24px;
+  text-align: right;
+}
+.letter-closing .signature { display: block; margin-top: 4px; }
+
+/* ═══ ENVELOPE - redesigned with clip-path ═══ */
+.envelope-section {
+  padding: 30px 0 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.envelope-hint {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 24px;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 260px;
+  height: 245px; /* 85 flap + 160 body */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-top: 160px;
+}
+.envelope-wrapper:hover { transform: scale(1.04); }
+
+/* Letter that slides up when opened */
+.envelope-letter-inner {
+  position: absolute;
+  top: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  background: linear-gradient(145deg, #FFFBF7, #FFF5F0);
+  border-radius: 10px;
+  padding: 26px 22px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.8;
+  text-align: center;
+  z-index: 1;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s, opacity 0.5s ease 0.15s;
+  box-shadow: 0 4px 20px rgba(74, 48, 64, 0.12);
+  opacity: 0;
+  border: 1px solid rgba(248, 200, 216, 0.3);
+}
+
+.envelope-wrapper.opened .envelope-letter-inner {
+  transform: translateX(-50%) translateY(-240px);
+  opacity: 1;
+  z-index: 5;
+}
+
+/* Body - the rectangular pocket */
+.envelope-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 260px;
+  height: 160px;
+  background: linear-gradient(145deg, #FFE4EE, var(--blush));
+  border-radius: 4px 4px 14px 14px;
+  box-shadow: 0 8px 28px rgba(212, 105, 127, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.3);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* V-fold decorative lines inside body */
+.envelope-body::before,
+.envelope-body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 1.5px;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.4);
+}
+.envelope-body::before {
+  left: 0;
+  transform-origin: top left;
+  transform: rotate(33deg);
+}
+.envelope-body::after {
+  right: 0;
+  transform-origin: top right;
+  transform: rotate(-33deg);
+}
+
+.envelope-body-heart {
+  font-size: 2rem;
+  opacity: 0.5;
+  transition: opacity 0.3s, transform 0.3s;
+  filter: drop-shadow(0 2px 6px rgba(212, 105, 127, 0.2));
+  z-index: 1;
+}
+.envelope-wrapper:hover .envelope-body-heart { opacity: 0.8; transform: scale(1.1); }
+.envelope-wrapper.opened .envelope-body-heart { opacity: 0.3; }
+
+/* Heart wax seal at tip of closed flap */
+.envelope-seal {
+  position: absolute;
+  top: 165px; /* 85 body-top + 80 flap-height = tip of closed flap */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 38px;
+  background: radial-gradient(circle, var(--rose) 0%, var(--rose-deep) 100%);
+  border-radius: 50%;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: white;
+  box-shadow: 0 2px 12px rgba(212, 105, 127, 0.4);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.envelope-wrapper.opened .envelope-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.3);
+}
+
+/* Closed flap - folds DOWN over the body (base at body top, tip points down) */
+.envelope-flap-closed {
+  position: absolute;
+  top: 85px; /* starts at body's top edge */
+  left: 0;
+  width: 260px;
+  height: 80px; /* extends 80px down into the body */
+  background: linear-gradient(180deg, var(--lavender), #EDE4F3);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  z-index: 4;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 6px rgba(74, 48, 64, 0.08));
+  transition: opacity 0.4s ease;
+}
+
+.envelope-wrapper.opened .envelope-flap-closed {
+  opacity: 0;
+}
+
+/* Open flap - points UP above the body (tip at top, base at body top) */
+.envelope-flap-open {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 85px;
+  background: linear-gradient(0deg, var(--lavender), #EDE4F3);
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 -2px 4px rgba(74, 48, 64, 0.04));
+  opacity: 0;
+  transition: opacity 0.4s ease 0.15s;
+}
+
+.envelope-wrapper.opened .envelope-flap-open {
+  opacity: 1;
+}
+
+/* ═══ FOOTER ═══ */
+footer {
+  text-align: center;
+  padding: 40px 24px 60px;
+  position: relative;
+  z-index: 2;
+}
+footer p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-faint);
+}
+footer .footer-heart {
+  display: inline-block;
+  color: var(--rose);
+  font-size: 1.4rem;
+  margin-top: 8px;
+  animation: heartBeat 1.8s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(232, 135, 156, 0.3));
+}
+
+/* ═══ HEART EXPLOSION ═══ */
+.heart-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  animation: heartExplode var(--duration) ease-out forwards;
+}
+
+@keyframes heartExplode {
+  0% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(var(--scale)) rotate(var(--rot)); }
+}
+
+/* ═══ SPARKLE CURSOR ═══ */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 50;
+  font-size: 0.55rem;
+  animation: sparkleFade 0.7s ease-out forwards;
+}
+
+@keyframes sparkleFade {
+  0% { opacity: 0.8; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(0) translateY(-18px); }
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 600px) {
+  .countdown-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .countdown-unit { padding: 14px 8px; }
+  .letter-card { transform: rotate(0deg); }
+  .letter-card::after { left: 28px; }
+  .secret-row { gap: 20px; }
+  .envelope-wrapper { width: 220px; height: 210px; margin-top: 140px; }
+  .envelope-body { width: 220px; height: 135px; }
+  .envelope-flap-closed { width: 220px; height: 68px; top: 75px; }
+  .envelope-flap-open { width: 220px; height: 75px; }
+  .envelope-seal { top: 143px; width: 32px; height: 32px; font-size: 0.8rem; }
+  .envelope-letter-inner { width: 185px; font-size: 0.82rem; padding: 18px 14px; top: 82px; }
+}
+
+@media (max-width: 380px) {
+  main { padding: 0 16px; }
+  .countdown-card { padding: 28px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Decorative side hearts -->
+<div class="deco-left">
+  <span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span>
+</div>
+<div class="deco-right">
+  <span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span>
+</div>
+
+<!-- Floating white hearts -->
+<div class="floating-hearts" id="floatingHearts"></div>
+
+<!-- Popup -->
+<div class="popup-overlay" id="popupOverlay"></div>
+<div class="secret-popup" id="secretPopup">
+  <div class="secret-popup-icon" id="popupIcon"></div>
+  <p id="popupText"></p>
+  <span class="secret-popup-close" id="popupClose">chạm để đóng</span>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero visible">
+    <div class="hero-top-deco">🎀</div>
+    <div class="hero-stars">✧ ✦ ✧</div>
+    <h1 id="heroTitle">Dành Cho Kiều <span class="heart-dot">♥</span></h1>
+    <p class="hero-tagline">Mỗi khoảnh khắc bên em là món quà tuyệt vời nhất với anh</p>
+    <div class="hero-deco-bottom">♡ ♡ ♡</div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="countdown-section" id="countdownSection">
+    <p class="section-label">và đếm từng giây kể từ ngày chúng mình tìm thấy nhau…</p>
+    <div class="countdown-card">
+      <div class="countdown-grid">
+        <div class="countdown-unit">
+          <span class="countdown-number" id="countDays">0</span>
+          <span class="countdown-label">Ngày</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="countHours">0</span>
+          <span class="countdown-label">Giờ</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="countMinutes">0</span>
+          <span class="countdown-label">Phút</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="countSeconds">0</span>
+          <span class="countdown-label">Giây</span>
+        </div>
+      </div>
+      <div class="countdown-divider"></div>
+      <p class="countdown-since">từ ngày 16 tháng 4, 2019 💕</p>
+    </div>
+  </section>
+
+  <div class="ribbon-divider">♡ ♡ ♡ ♡ ♡</div>
+
+  <!-- SECRET ICONS -->
+  <section id="secretSection">
+    <div class="secret-row" id="secretRow">
+      <span class="secret-icon" data-secret="0">🌸</span>
+      <span class="secret-icon" data-secret="1">🌙</span>
+      <span class="secret-icon" data-secret="2">⭐</span>
+    </div>
+  </section>
+
+  <!-- LOVE LETTER -->
+  <section class="letter-section" id="letterSection">
+    <div class="letter-card">
+      <p class="letter-date">Một bức thư, dành cho em</p>
+      <p class="letter-greeting">Kiều yêu dấu của anh,</p>
+      <div class="letter-body">
+        <p>Có cả ngàn cách để nói anh yêu em, nhưng không cách nào đủ lớn. Vì vậy, anh đã xây cho em góc nhỏ này trên internet - nơi lưu giữ những điều mà lời nói không thể chạm tới.</p>
+        <p>Em có nhớ ngày mọi thứ bắt đầu không? Anh nhớ. Ngày 16 tháng 4. Không khí hôm đó khác lạ lắm, như thể cả thế giới đã lặng lẽ sắp xếp lại chỉ để đường đi của chúng mình giao nhau. Lúc đó anh chưa biết rằng em sẽ trở thành người anh yêu nhất, nơi anh an toàn nhất, lý do anh cười một mình giữa ngày.</p>
+        <p>Em biến những khoảnh khắc bình thường thành phi thường. Một buổi sáng Chủ nhật lười biếng. Một câu đùa mà chỉ hai đứa mình hiểu. Cách em cười - cười thật sự - và anh quên mất mọi thứ khác tồn tại. Anh mang theo những khoảnh khắc ấy như những viên ngọc nhỏ, cất giấu trong những góc yên tĩnh nhất của trái tim.</p>
+        <p>Có người tìm kiếm cả đời mới có được điều chúng mình đang có. Anh muốn em biết rằng anh không bao giờ xem nhẹ điều đó - không một giây nào trong những giây đang đếm trên bộ đếm kia. Mỗi giây là một giây anh được gọi em là của anh, và điều đó khiến anh trở thành người may mắn nhất.</p>
+        <p>Đây là bức thư tình anh viết cho em, bằng code và màu sắc, bởi vì em xứng đáng được nhắc nhở - không chỉ hôm nay, mà mãi mãi - rằng em được yêu thương sâu sắc, vô tận.</p>
+      </div>
+      <div class="letter-closing">
+        Mãi mãi là của em,
+        <span class="signature">- Anh yêu của em ♥</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="ribbon-divider">✧ ♡ ✧ ♡ ✧</div>
+
+  <!-- ENVELOPE -->
+  <section class="envelope-section" id="envelopeSection">
+    <div class="envelope-wrapper" id="envelope">
+      <div class="envelope-letter-inner">
+        Em là điều tuyệt vời nhất<br>từng xảy đến với anh.<br><br>Anh yêu em, Kiều.<br>Hôm nay, ngày mai,<br>và mãi mãi về sau. 💖
+      </div>
+      <div class="envelope-flap-closed"></div>
+      <div class="envelope-flap-open"></div>
+      <div class="envelope-seal">♥</div>
+      <div class="envelope-body">
+        <span class="envelope-body-heart">💌</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Được làm bằng tất cả tình yêu của anh</p>
+  <div class="footer-heart">💖</div>
+</footer>
+
+<script>
+const START_DATE = new Date('2019-04-16T00:00:00');
+
+const SECRET_MESSAGES = [
+  { icon: '🌸', text: 'Như một bông hoa chỉ nở vì em - trái tim anh mở ra thêm một chút mỗi khi thấy em cười.' },
+  { icon: '🌙', text: 'Ngay cả trong những đêm tối nhất, em là vầng trăng của anh - dịu dàng, bền bỉ, và đẹp không tưởng.' },
+  { icon: '⭐', text: 'Nếu anh có thể bắt một ngôi sao cho mỗi lý do anh yêu em, anh sẽ ôm cả bầu trời trong tay.' },
+];
+
+/* Countdown */
+const $d = document.getElementById('countDays');
+const $h = document.getElementById('countHours');
+const $m = document.getElementById('countMinutes');
+const $s = document.getElementById('countSeconds');
+
+function updateCountdown() {
+  let diff = Math.max(0, Math.floor((new Date() - START_DATE) / 1000));
+  $d.textContent = Math.floor(diff / 86400).toLocaleString();
+  $h.textContent = String(Math.floor((diff % 86400) / 3600)).padStart(2, '0');
+  $m.textContent = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
+  $s.textContent = String(diff % 60).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* Scroll reveal */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('section:not(.hero)').forEach(s => observer.observe(s));
+
+/* Floating white hearts */
+const hc = document.getElementById('floatingHearts');
+for (let i = 0; i < 20; i++) {
+  const h = document.createElement('span');
+  h.classList.add('floating-heart');
+  h.textContent = ['♥', '♡', '❤'][Math.floor(Math.random() * 3)];
+  h.style.left = Math.random() * 100 + '%';
+  h.style.fontSize = (0.7 + Math.random() * 1.2) + 'rem';
+  h.style.animationDuration = (12 + Math.random() * 20) + 's';
+  h.style.animationDelay = (Math.random() * 18) + 's';
+  hc.appendChild(h);
+}
+
+/* Heart explosion on hero click */
+document.getElementById('heroTitle').addEventListener('click', function(e) {
+  const r = this.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const emojis = ['💖', '💕', '💗', '💓', '🩷', '♥', '🌸', '✨'];
+  for (let i = 0; i < 24; i++) {
+    const p = document.createElement('span');
+    p.classList.add('heart-particle');
+    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    const angle = (Math.PI * 2 * i) / 24 + (Math.random() - 0.5) * 0.4;
+    const dist = 90 + Math.random() * 180;
+    const tx = Math.cos(angle) * dist, ty = Math.sin(angle) * dist - 50;
+    const dur = 0.9 + Math.random() * 0.7;
+    const sc = 0.6 + Math.random() * 1;
+    p.style.left = cx + 'px'; p.style.top = cy + 'px';
+    p.style.fontSize = (0.9 + Math.random() * 0.9) + 'rem';
+    p.style.setProperty('--tx', tx + 'px');
+    p.style.setProperty('--ty', ty + 'px');
+    p.style.setProperty('--scale', sc);
+    p.style.setProperty('--rot', ((Math.random() - 0.5) * 360) + 'deg');
+    p.style.setProperty('--duration', dur + 's');
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), dur * 1000 + 50);
+  }
+});
+
+/* Secret popups */
+const $ov = document.getElementById('popupOverlay');
+const $pop = document.getElementById('secretPopup');
+const $pIcon = document.getElementById('popupIcon');
+const $pText = document.getElementById('popupText');
+
+function showPopup(i) {
+  $pIcon.textContent = SECRET_MESSAGES[i].icon;
+  $pText.textContent = SECRET_MESSAGES[i].text;
+  $ov.classList.add('show'); $pop.classList.add('show');
+}
+function hidePopup() { $ov.classList.remove('show'); $pop.classList.remove('show'); }
+
+document.querySelectorAll('.secret-icon').forEach(el => {
+  el.addEventListener('click', () => showPopup(Number(el.dataset.secret)));
+});
+document.getElementById('popupClose').addEventListener('click', hidePopup);
+$ov.addEventListener('click', hidePopup);
+
+/* Envelope */
+document.getElementById('envelope').addEventListener('click', function() {
+  this.classList.toggle('opened');
+});
+
+/* Sparkle cursor trail */
+let st = 0;
+document.addEventListener('mousemove', (e) => {
+  const now = Date.now();
+  if (now - st < 70) return;
+  st = now;
+  const s = document.createElement('span');
+  s.classList.add('sparkle');
+  s.textContent = ['✦', '✧', '♡', '·'][Math.floor(Math.random() * 4)];
+  s.style.left = (e.clientX + (Math.random() - 0.5) * 14) + 'px';
+  s.style.top = (e.clientY + (Math.random() - 0.5) * 14) + 'px';
+  s.style.color = ['var(--blush-bright)', 'var(--lavender)', 'var(--rose)', 'var(--gold)'][Math.floor(Math.random() * 4)];
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 700);
+});
+</script>
+</body>
+</html>
